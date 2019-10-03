@@ -46,6 +46,9 @@ def sendEmailAlertToBoss(message,price):
 #Got the Entire HTML Content of the website
 source = requests.get(WEB_URL).content
 soup = BeautifulSoup(source, 'html.parser')
-for iphoneXR in soup.find_all('div',class_='_1uv9Cb'):
-    priceValue = iphoneXR.find('div',class_='_1vC4OE _3qQ9m1').text
-    formatPhonePriceValue(priceValue)
+try:
+    for iphoneXR in soup.find_all('div',class_='_1uv9Cb'):
+        priceValue = iphoneXR.find('div',class_='_1vC4OE _3qQ9m1').text
+        formatPhonePriceValue(priceValue)
+except AttributeError as identifier:
+    pass
